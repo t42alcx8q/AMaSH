@@ -1,0 +1,7 @@
+name: pi-sound-sensor
+packageKey: pi-sound-sensor
+description: Raspberry Pi USB Mic sound monitor (LAN polling)
+
+permissions:
+  lan: {}
+  discovery: {}

@@ -1,0 +1,74 @@
+name: pi-sound-sensor
+components:
+  - id: main
+    label: Loud Event
+    capabilities:
+      - id: switch
+        version: 1
+      - id: soundSensor
+        version: 1
+      - id: soundPressureLevel
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SoundSensor
+
+preferences:
+  - name: piHost
+    title: Raspberry Pi Host
+    description: IP or hostname of your Raspberry Pi (e.g., 192.168.68.63)
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: "192.168.68.63"
+
+  - name: piPort
+    title: Raspberry Pi Port
+    description: HTTP port of your Pi sound sensor service
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 65535
+      default: 8787
+
+  - name: httpPath
+    title: HTTP Path
+    description: Endpoint path that returns JSON state (e.g., /state)
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: "/state"
+
+  - name: pollSeconds
+    title: Poll interval (seconds)
+    description: How often the hub polls the Pi
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 60
+      default: 1
+
+  - name: httpTimeout
+    title: HTTP timeout (seconds)
+    description: Request timeout
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 10
+      default: 2
+
+  - name: dbOffset
+    title: dB Offset -> SPL (0..194)
+    description: Map Pi dB (often negative dBFS) to SPL display
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 200
+      default: 120
