@@ -207,7 +207,7 @@ local function handle_switch_off(driver, device, command)
   poll_once(driver, device)
 end
 
--- Discovery: v1 只创建一个设备（靠 preference 配 IP/Port）
+-- Discovery
 local function discovery_handler(driver, opts, continue)
   local dni = "pi-sound-sensor:v1"
 
